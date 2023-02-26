@@ -1,33 +1,36 @@
 version: '3'
 
 services:
-  db:
-    image: mysql:8.0
-    container_name: db
-    restart: unless-stopped
-    env_file: .env
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    restart: always
     environment:
-      - MYSQL_DATABASE=wordpress
-    volumes: 
-      - dbdata:/var/lib/mysql
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: derma_admin
+        MYSQL_PASSWORD: test123456
+        MYSQL_RANDOM_ROOT_PASSWORD: 'derma_admin'
+    volumes:
+        - dbdata:/var/lib/mysql
     command: '--default-authentication-plugin=mysql_native_password'
     networks:
       - app-network
 
   wordpress:
     depends_on: 
-      - db
+      - mariadb
     image: wordpress:6.1.1-fpm-alpine
     container_name: wordpress
     restart: unless-stopped
     env_file: .env
     environment:
-      - WORDPRESS_DB_HOST=db:3306
+      - WORDPRESS_DB_HOST=mariadb:3306
       - WORDPRESS_DB_USER=$MYSQL_USER
       - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
       - WORDPRESS_DB_NAME=wordpress
     volumes:
       - wordpress:/var/www/html
+      - ./wp_data:/var/www/html
     networks:
       - app-network
 
@@ -41,24 +44,21 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - wordpress:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
-      - certbot-etc:/etc/letsencrypt
+      - ./certbot-etc:/etc/letsencrypt
     networks:
       - app-network
 
-  certbot:
-    depends_on:
-      - webserver
-    image: certbot/certbot
-    container_name: certbot_derma
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email sammy@derma-queen-clinic.com --agree-tos --no-eff-email --force-renewal -d derma-queen-clinic.com -d www.derma-queen-clinic.com
+  # certbot:
+  #   depends_on:
+  #     - webserver
+  #   image: certbot/certbot
+  #   container_name: certbot_derma
+  #   volumes:
+  #     - ./certbot-etc:/etc/letsencrypt
+  #   command: certonly --webroot --webroot-path=/var/www/html --email sammy@derma-queen-clinic.com --agree-tos --no-eff-email --force-renewal -d derma-queen-clinic.com -d www.derma-queen-clinic.com
 
 volumes:
-  certbot-etc:
   wordpress:
   dbdata:
 
