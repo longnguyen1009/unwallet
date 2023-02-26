@@ -10,8 +10,8 @@ services:
         MYSQL_USER: derma_admin
         MYSQL_PASSWORD: test123456
         MYSQL_RANDOM_ROOT_PASSWORD: 'derma_admin'
-    volumes:
-        - dbdata:/var/lib/mysql
+    volumes: 
+      - dbdata:/var/lib/mysql
     command: '--default-authentication-plugin=mysql_native_password'
     networks:
       - app-network
@@ -29,8 +29,21 @@ services:
       - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
       - WORDPRESS_DB_NAME=wordpress
     volumes:
-      - wordpress:/var/www/html
       - ./wp_data:/var/www/html
+    networks:
+      - app-network
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      # https://docs.phpmyadmin.net/en/latest/setup.html#docker-environment-variables
+      PMA_HOST: mariadb
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      UPLOAD_LIMIT: 50M
+    ports:
+      - 8080:80
+    links:
+      - mariadb:mariadb
     networks:
       - app-network
 
@@ -42,8 +55,8 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
-      - "443:443"
     volumes:
+      - ./wp_data:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - ./certbot-etc:/etc/letsencrypt
     networks:
@@ -53,13 +66,14 @@ services:
   #   depends_on:
   #     - webserver
   #   image: certbot/certbot
-  #   container_name: certbot_derma
+  #   container_name: certbot
   #   volumes:
-  #     - ./certbot-etc:/etc/letsencrypt
-  #   command: certonly --webroot --webroot-path=/var/www/html --email sammy@derma-queen-clinic.com --agree-tos --no-eff-email --force-renewal -d derma-queen-clinic.com -d www.derma-queen-clinic.com
+  #     - certbot-etc:/etc/letsencrypt
+  #     - wordpress:/var/www/html
+  #   command: certonly --webroot --webroot-path=/var/www/html --email sammy@your_domain --agree-tos --no-eff-email --staging -d your_domain -d www.your_domain
 
 volumes:
-  wordpress:
+  # certbot-etc:
   dbdata:
 
 networks:
