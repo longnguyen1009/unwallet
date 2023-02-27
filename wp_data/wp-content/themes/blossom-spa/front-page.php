@@ -1,0 +1,23 @@
+<?php
+/**
+ * Front Page | Home page
+ * 
+ * @package Blossom_Spa
+ */
+
+// $home_sections = blossom_spa_get_home_sections();
+$home_sections = ['banner', 'dichvunoibat', 'cosovatchat', 'hinhanhthucte', 'home-call-action'];
+
+if ( 'posts' == get_option( 'show_on_front' ) ) { //Show Static Blog Page
+    include( get_home_template() );
+}elseif( $home_sections ){ 
+    get_header();
+    //If any one section are enabled then show custom home page.
+    foreach( $home_sections as $section ){
+        get_template_part( 'sections/' . esc_attr( $section ) );  
+    }
+    get_footer();
+}else {
+    //If all section are disabled then show respective page template. 
+    include( get_page_template() );
+}
