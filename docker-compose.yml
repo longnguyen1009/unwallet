@@ -15,23 +15,6 @@ services:
     command: '--default-authentication-plugin=mysql_native_password'
     networks:
       - app-network
-
-  wordpress:
-    depends_on: 
-      - mariadb
-    image: wordpress:6.1.1-fpm-alpine
-    container_name: wordpress
-    restart: unless-stopped
-    env_file: .env
-    environment:
-      - WORDPRESS_DB_HOST=mariadb:3306
-      - WORDPRESS_DB_USER=$MYSQL_USER
-      - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
-      - WORDPRESS_DB_NAME=wordpress
-    volumes:
-      - ./wp_data:/var/www/html
-    networks:
-      - app-network
   pma:
     image: phpmyadmin/phpmyadmin
     environment:
@@ -47,6 +30,25 @@ services:
     networks:
       - app-network
 
+  wordpress:
+    depends_on: 
+      - mariadb
+    image: wordpress:6.1.1-fpm-alpine
+    container_name: wordpress
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - WORDPRESS_DB_HOST=mariadb:3306
+      - WORDPRESS_DB_USER=$MYSQL_USER
+      - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
+      - WORDPRESS_DB_NAME=wordpress
+    volumes:
+            #- wordpress:/var/www/html
+      - ./wp_data:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    networks:
+      - app-network
+
   webserver:
     depends_on:
       - wordpress
@@ -57,6 +59,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
+            #- wordpress:/var/www/html
       - ./wp_data:/var/www/html
       - ./nginx-conf:/etc/nginx/conf.d
       - ./certbot-etc:/etc/letsencrypt
@@ -75,8 +78,9 @@ services:
 
 volumes:
   # certbot-etc:
+  wordpress:
   dbdata:
 
 networks:
   app-network:
-    driver: bridge
+    driver: bridge  
