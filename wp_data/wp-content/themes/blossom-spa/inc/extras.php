@@ -1228,11 +1228,13 @@ function blossom_spa_header_address_contact( $echo = true, $layout = true ){
                 </div>
                 <div class="for_right">
                     <div class="header-phone">
-                        <span><i class="fas fa-phone-alt derma-icon-phone"></i></span>
-                        <span class="derma-icon-zalo"><img src="<?php echo get_template_directory_uri().'/images/zalo.svg'; ?>"></span>
-                        <span class="derma-hotline-number">Hotline: 0847257267</span>
+                        <a href="tel:0847257267" data-wpel-link="internal" class="common-btn-01 header-phone-btn">
+                            <span class="derma-icon"><i class="fas fa-phone-alt derma-icon-phone"></i></span>
+                            <span class="derma-icon derma-icon-zalo"><img src="<?php echo get_template_directory_uri().'/images/zalo.svg'; ?>"></span>
+                            <span class="derma-hotline-number"><span class="derma-hotline-label">Hotline:</span> 0847.257.267</span>
+                        </a>
                     </div>
-                    <div class="header-facebook"><i class="fa-brands fa-facebook-f derma-icon-facebook"></i> Fanpage: Derma Queen Clinic</div>
+                    <!-- <div class="header-facebook"><i class="fa-brands fa-facebook-f derma-icon-facebook"></i> Fanpage: Derma Queen Clinic</div> -->
                 </div>        
             </div>
         </div>

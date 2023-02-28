@@ -216,7 +216,7 @@ STYLE FOR MAIN
 }
 
 .header-main {
-    height: 90px;
+    height: 96px;
     display: flex;
     align-items: center
 }
@@ -9408,6 +9408,7 @@ span.airdatepicker--time-current-ampm {
 .header-right__content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .header-right__content .for_left {
     text-align: center;
@@ -9417,18 +9418,18 @@ span.airdatepicker--time-current-ampm {
 .header-right__content .for_left h3 {
     font-size: 20px;
 }
-.header-phone {
+.header-phone-btn {
     display: flex;
     align-items: center;
     width: 300px;
-    padding: 4px 13px;
+    padding: 7px 13px;
     border-radius: 5px;
     background-color: var(--primary-color);
     color: #fff;
 }
-.header-phone span {
+.header-phone-btn .derma-icon {
     display: block;
-    margin-right: 8px;
+    margin-right: 5px;
     height: 35px;
 }
 .derma-icon-phone{
@@ -9459,6 +9460,68 @@ span.airdatepicker--time-current-ampm {
     margin-top: 5px;
 }
 
+
+@media screen and (max-width: 1400px) {
+    .site-branding {
+        width: 360px;
+    }
+    .site-branding .custom-logo-link {
+        height: 57px;
+    }
+    .site-branding .custom-logo {
+        width: 57px;
+    }
+    .site-branding .site-title-wrap .site-title {
+        font-size: 28px;
+    }
+    .header-right {
+        margin-left: 15px;
+    }
+    .for_left .text-holder h3,
+    .for_left .text-holder span{
+        font-size: 16px;
+    }
+    .header-phone-btn {
+        width: 254px;
+        padding: 5px 6px;
+    }
+    .derma-hotline-number {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .header-main{
+        height: 135px;
+    }
+    .header-right__content {
+        flex-wrap: wrap;
+        margin: auto;
+        width: 470px;
+    }
+    .header-right__content .for_left {
+        margin-top: 0;
+        margin-bottom: 8px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--primary-color);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .header-main{
+        height: 150px;
+    }
+    .site-branding{
+        flex-wrap: wrap;
+        width: 450px;
+    }
+    .header-right__content{
+        width: 410px;
+    }
+    .for_left .text-holder h3, .for_left .text-holder span{
+        font-size: 14.5px;
+    }
+}
 
 
 
