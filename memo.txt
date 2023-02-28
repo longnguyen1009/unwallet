@@ -1,5 +1,5 @@
 TOKEN git
-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
+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
 
 Admin Dashboard
 derma-admin
@@ -8,3 +8,6 @@ test123456
 FIX Permission ERROR
 docker exec -it wordpress sh
 chown -R www-data:www-data /var/www/html
+
+SSH:
+gcloud compute ssh --zone "asia-southeast1-a" "derma-queen-com"  --project "sturdy-cable-374816"
