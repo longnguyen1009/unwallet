@@ -9401,6 +9401,14 @@ span.airdatepicker--time-current-ampm {
 /* 
  HEADER
 */
+.site-header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    top: 0;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+}
 .header-right {
     flex-grow: 1;
     margin-left: 80px;
@@ -9459,6 +9467,13 @@ span.airdatepicker--time-current-ampm {
     color: #fff;
     margin-top: 5px;
 }
+.header-main .site-description-sp {
+    display: none;
+}
+
+.main-navigation ul li {
+    margin-left: 15px;
+}
 
 
 @media screen and (max-width: 1400px) {
@@ -9505,6 +9520,12 @@ span.airdatepicker--time-current-ampm {
         padding-bottom: 5px;
         border-bottom: 1px solid var(--primary-color);
     }
+    .main-navigation .menu-item:nth-child(7){
+        display: none;
+    }
+    .main-navigation ul li {
+        margin-left: 12px;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -9522,6 +9543,47 @@ span.airdatepicker--time-current-ampm {
         font-size: 14.5px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .header-main {
+        flex-wrap: wrap;
+        justify-content: center;
+        height: 86px;
+    }
+    .header-right {
+        display: none;
+    }
+}
+@media screen and (max-width: 415px) {
+    .header-main .site-title{
+       font-size: 26px;
+    }
+    .header-main .site-description{
+       font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .site-branding .custom-logo{
+       width: 40px;
+    }
+    .site-branding .custom-logo-link {
+        height: 40px;
+    }
+    .site-branding .site-title-wrap .site-title {
+       font-size: 22px;
+    }
+    .header-main .site-description{
+       display: none;
+    }
+    .header-main .site-description-sp{
+       display: block;
+       font-size: 16px;
+       margin-top: 3px;
+    }
+}
+
+
 
 
 

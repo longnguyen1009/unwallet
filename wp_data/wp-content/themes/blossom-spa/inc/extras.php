@@ -240,8 +240,8 @@ function blossom_spa_site_branding(){
                 }
                 if( $branding_class ) echo '</div>';
             endif;
-
             ?>
+            <p class="site-description-sp" itemprop="description"><?php echo $description; ?></p>
         </div>    
     <?php
     endif;

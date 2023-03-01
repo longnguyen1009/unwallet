@@ -108,16 +108,12 @@ require get_template_directory() . '/inc/class-webfont-loader.php';
  */
 function add_customize_style() {
 		// Register theme stylesheet.
-		$theme_version = wp_get_theme()->get( 'Version' );
+		$theme_version = wp_get_theme()->get('Version');
 		$version_string = is_string( $theme_version ) ? $theme_version : false;
-		wp_register_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
-		wp_register_style('normalize-style', get_template_directory_uri() . '/css/normalize.css',array(),$version_string);
-		wp_register_style('customize-style', get_template_directory_uri() . '/css/customize.css', array(),$version_string);
-
-		// Enqueue theme stylesheet.
-		wp_enqueue_style( 'bootstrap-style' );
-		wp_enqueue_style( 'normalize-style' );
-		wp_enqueue_style( 'customize-style' );
+		wp_enqueue_style('bootstrap-style', 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
+		wp_enqueue_style('normalize-style', get_template_directory_uri() . '/css/normalize.css',array(),$version_string);
+		wp_enqueue_style('customize-style', get_template_directory_uri() . '/css/customize.css', array(),$version_string);
+		wp_enqueue_script('script', get_template_directory_uri() . '/js/main-script.js', array('jquery'), $version_string);
 }
 
 add_action( 'wp_enqueue_scripts', 'add_customize_style' );
