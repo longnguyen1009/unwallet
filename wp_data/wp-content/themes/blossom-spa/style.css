@@ -3003,10 +3003,12 @@ SITE BANNER SLIDER
 =============================*/
 .site-banner .owl-carousel .owl-nav .owl-prev {
 	left: 80px;
+	border: 1px solid #fff;
 }
 
 .site-banner .owl-carousel .owl-nav .owl-next {
 	right: 80px;
+	border: 1px solid #fff;
 }
 
 .site-banner .owl-carousel .owl-dots {
