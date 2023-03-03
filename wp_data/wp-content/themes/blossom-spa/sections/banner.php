@@ -15,32 +15,43 @@ $button2_url      = get_theme_mod( 'banner_cta2_url', '#' );
         
 if( $ed_banner == 'static_banner' && has_custom_header() ){ ?>
     <div id="banner_section" class="site-banner<?php if( has_header_video() ) echo esc_attr( ' video-banner' ); ?>">
-        <div class="item">
-            <?php 
-                the_custom_header_markup(); 
-                if( $banner_title || $banner_subtitle || ( $button1 && $button1_url ) || ( $button2 && $button2_url ) ){
-                    echo '<div class="banner-caption center"><div class="container"><div class="banner-caption-inner">';
-                    if( $banner_title ) echo '<h2 class="title">' . esc_html( $banner_title ) . '</h2>';
-                    if( $banner_subtitle ) echo '<div class="description">' . wpautop( wp_kses_post( $banner_subtitle ) ) . '</div>';
-                    if( $button1 || $button2 ) : ?>
-                        <div class="btn-wrap">
-                            <?php if( $button1 && $button1_url ) : ?>
-                                <a href="<?php echo esc_url( $button1_url ); ?>" class="btn btn-transparent">
-                                    <span><?php echo esc_html( $button1 ); ?></span>
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            <?php endif; ?>
-                            <?php if( $button2 && $button2_url ) : ?>
-                                <a href="<?php echo esc_url( $button2_url ); ?>" class="btn btn-green">
-                                    <span><?php echo esc_html( $button2 ); ?></span>
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                    <?php endif;
-                    echo '</div></div></div>';
-                }  
-            ?>
+        <div class="owl-carousel">
+            <div class="slider-item">
+                <img src="https://cdn.diemnhangroup.com/seoulspa/2022/11/1440x480-BANNER-WEB-TMV-SSPA.jpg" alt="">
+            </div>
+            <div class="slider-item">
+                <img src="https://cdn.diemnhangroup.com/seoulspa/2023/03/quyen-nang-sac-dep-1440x480-1.jpg" alt="">
+            </div>
+            <div class="slider-item">
+                <img src="https://cdn.diemnhangroup.com/seoulspa/2023/03/quyen-nang-sac-dep-1440x480-1.jpg" alt="">
+            </div>
+            <div class="item">
+                <?php 
+                    the_custom_header_markup(); 
+                    if( $banner_title || $banner_subtitle || ( $button1 && $button1_url ) || ( $button2 && $button2_url ) ){
+                        echo '<div class="banner-caption center"><div class="container"><div class="banner-caption-inner">';
+                        if( $banner_title ) echo '<h2 class="title">' . esc_html( $banner_title ) . '</h2>';
+                        if( $banner_subtitle ) echo '<div class="description">' . wpautop( wp_kses_post( $banner_subtitle ) ) . '</div>';
+                        if( $button1 || $button2 ) : ?>
+                            <div class="btn-wrap">
+                                <?php if( $button1 && $button1_url ) : ?>
+                                    <a href="<?php echo esc_url( $button1_url ); ?>" class="btn btn-transparent">
+                                        <span><?php echo esc_html( $button1 ); ?></span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                <?php endif; ?>
+                                <?php if( $button2 && $button2_url ) : ?>
+                                    <a href="<?php echo esc_url( $button2_url ); ?>" class="btn btn-green">
+                                        <span><?php echo esc_html( $button2 ); ?></span>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif;
+                        echo '</div></div></div>';
+                    }  
+                ?>
+            </div>
         </div>
     </div>
 <?php
