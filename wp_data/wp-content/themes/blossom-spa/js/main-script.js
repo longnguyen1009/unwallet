@@ -11,11 +11,8 @@ jQuery(document).ready(function () {
         dots:true,
         margin:15,
         autoplay:true,
-        autoplayTimeout:4000,
         autoplayHoverPause:true,
         responsiveClass:true,
-        lazyLoad:true,
-        smartSpeed:1200,
         responsive:{
             0:{
                 items:1,
@@ -37,26 +34,4 @@ jQuery(document).ready(function () {
 function addMarginBottomHeader() {
     jQuery('.site-header').next().css("margin-top", jQuery('.site-header').outerHeight() + 'px');
 }
-
-
-jQuery(document).ready(function () {
-    taisaoActiveFucntion(".taisao-list-item:first");
-	jQuery('.taisao-list-item').click(function() {
-        taisaoActiveFucntion(this);
-    })
-});
-function taisaoActiveFucntion(element) {
-    if(!jQuery(element).hasClass('active')){
-        jQuery('.taisao-list-item.active, .taisao-detail-item.active').removeClass('active');
-        jQuery(element).addClass('active');
-        jQuery('.taisao-detail-item').eq(jQuery('.taisao-list-item').index(jQuery(element))).addClass('active');
-    } else {
-        return false;
-    }
-}
-
-
-
-
-
 
