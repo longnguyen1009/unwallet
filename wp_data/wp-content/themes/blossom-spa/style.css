@@ -6691,7 +6691,7 @@ RESPONSIVE STYLESHEET
 	}
 
 	.site-banner .item img {
-		height: 450px;
+		height: 550px;
 		object-fit: cover;
 		width: 100%;
 	}
@@ -6850,9 +6850,6 @@ RESPONSIVE STYLESHEET
 		max-width: 768px;
 	}
 
-	.site-banner .banner-caption{
-		display: none;
-	}
 	.site-banner .banner-caption .container {
 		max-width: 768px;
 	}
