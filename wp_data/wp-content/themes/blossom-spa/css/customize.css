@@ -9475,6 +9475,51 @@ span.airdatepicker--time-current-ampm {
     margin-left: 15px;
 }
 
+/* taisaoderma */
+.taisao-content-left {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+.taisao-content-right {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 70%;
+    flex: 0 0 70%;
+    max-width: 70%;
+}
+.taisao-content .img-holder {
+    background-color: #0392ce;
+    color: #fff;
+}
+.taisao-content .img-holder img{
+    width: 100%;
+}
+.taisao-content .img-holder .overlay-content {
+    padding: 8px 12px 12px 12px;
+    font-size: 14px;
+}
+.taisao-detail-left h3{
+    color: #0392ce;
+    margin-bottom: 20px;
+}
+.taisao-detail-right img {
+    width: 100%;
+}
+.taisao-list {
+    margin-top: 20px;
+}
+
+
+.taisao-detail .taisao-detail-item{
+    display: none;
+}
+.taisao-detail .taisao-detail-item:nth-child(1){
+    display: flex;
+}
+.taisao-list-item {
+    text-align: center;
+}
 
 @media screen and (max-width: 1400px) {
     .site-branding {
@@ -9542,6 +9587,19 @@ span.airdatepicker--time-current-ampm {
     .for_left .text-holder h3, .for_left .text-holder span{
         font-size: 14.5px;
     }
+    .banner-caption {
+        display: none;
+    }
+    .taisao-content-left {
+        display: none;
+    }
+    .taisao-content-right {
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
 }
 
 @media screen and (max-width: 768px) {

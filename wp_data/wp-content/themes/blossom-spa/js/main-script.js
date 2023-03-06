@@ -11,8 +11,11 @@ jQuery(document).ready(function () {
         dots:true,
         margin:15,
         autoplay:true,
+        autoplayTimeout:4000,
         autoplayHoverPause:true,
         responsiveClass:true,
+        lazyLoad:true,
+        smartSpeed:1200,
         responsive:{
             0:{
                 items:1,
