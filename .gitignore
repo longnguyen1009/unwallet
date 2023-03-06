@@ -1,4 +1,2 @@
 .env
-nginx-conf/options-ssl-nginx.conf
-nginx-conf/nginx.conf
 wp-data/wp-content/uploads
