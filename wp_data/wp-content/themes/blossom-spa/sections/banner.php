@@ -17,15 +17,15 @@ if( $ed_banner == 'static_banner' && has_custom_header() ){ ?>
     <div id="banner_section" class="site-banner<?php if( has_header_video() ) echo esc_attr( ' video-banner' ); ?>">
         <div class="owl-carousel">
             <div class="slider-item">
-                <img src="https://drthaiha.vn/wp-content/uploads/2019/05/banner002.jpg" alt="">
+                <img src="https://cdn.diemnhangroup.com/seoulspa/2022/11/1440x480-BANNER-WEB-TMV-SSPA.jpg" alt="">
             </div>
             <div class="slider-item">
-                <img src="https://drthaiha.vn/wp-content/uploads/2019/05/banner001.jpg" alt="">
+                <img src="https://cdn.diemnhangroup.com/seoulspa/2023/03/quyen-nang-sac-dep-1440x480-1.jpg" alt="">
             </div>
             <div class="slider-item">
-                <img src="https://drthaiha.vn/wp-content/uploads/2019/05/banner001.jpg" alt="">
+                <img src="https://cdn.diemnhangroup.com/seoulspa/2023/03/quyen-nang-sac-dep-1440x480-1.jpg" alt="">
             </div>
-            <!-- <div class="item">
+            <div class="item">
                 <?php 
                     the_custom_header_markup(); 
                     if( $banner_title || $banner_subtitle || ( $button1 && $button1_url ) || ( $button2 && $button2_url ) ){
@@ -51,7 +51,7 @@ if( $ed_banner == 'static_banner' && has_custom_header() ){ ?>
                         echo '</div></div></div>';
                     }  
                 ?>
-            </div> -->
+            </div>
         </div>
     </div>
 <?php
