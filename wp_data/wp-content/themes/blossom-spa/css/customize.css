@@ -3,7 +3,7 @@
 STYLE FOR MAIN 
 ============================================= */ 
 .sprite {
-    background-image: url(../../images/spritess/spritesheet.webp);
+    background-image: url(../images/spritess/spritesheet.webp);
     background-repeat: no-repeat;
     display: block
 }
@@ -911,7 +911,7 @@ main {
 }
 
 .form--style-full select {
-    background-image: url(../../images/left-icon.png);
+    background-image: url(../images/left-icon.png);
     background-position: calc(100% - 7px) calc(1em + -4px),calc(100% - 15px) calc(1em + 2px),100% 0;
     background-repeat: no-repeat
 }
@@ -1217,7 +1217,7 @@ nav.pagination ul li a.next.page-numbers:after,nav.pagination ul li a.prev.page-
     width: 32px;
     height: 32px;
     content: "";
-    background-image: url(../../images/spritesheet.png);
+    background-image: url(../images/spritesheet.png);
     background-repeat: no-repeat;
     display: block;
     position: absolute;
@@ -2176,7 +2176,7 @@ button.ap__go-back {
     .main-nav-mobile>ul.navigation-mobile>li>a::before {
         content: "";
         background-position: -5px -5px;
-        background-image: url(../../images/spritesheet.png);
+        background-image: url(../images/spritesheet.png);
         background-repeat: no-repeat;
         display: block;
         position: absolute;
@@ -2677,7 +2677,7 @@ button.ap__go-back {
 
     .menu__container:before {
         content: '';
-        background-image: url(../../images/menu-seoulspa-ipad.png);
+        background-image: url(../images/menu-seoulspa-ipad.png);
         width: 100%;
         height: 68px;
         position: absolute;
@@ -3170,7 +3170,7 @@ button.ap__go-back {
 
     .menu__container:before {
         content: '';
-        background-image: url(../../images/menu-seoulspa.png);
+        background-image: url(../images/menu-seoulspa.png);
         width: 100%;
         height: 66px;
         position: absolute;
@@ -3765,7 +3765,7 @@ https://flickity.metafizzy.co
 }
 
 .sv-sprite {
-    background-image: url(../../images/home/spritesheet-service.png);
+    background-image: url(../images/home/spritesheet-service.png);
     background-repeat: no-repeat
 }
 
@@ -3819,7 +3819,7 @@ https://flickity.metafizzy.co
 
 .service__title::after {
     content: "";
-    background-image: url(../../images/home/service-bg.png);
+    background-image: url(../images/home/service-bg.png);
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -4386,13 +4386,13 @@ https://flickity.metafizzy.co
 }
 
 .service__title::after {
-    background-image: url(../../images/home/service-bg-mb.png);
+    background-image: url(../images/home/service-bg-mb.png);
     background-size: cover;
     background-repeat: no-repeat
 }
 
 .sv-sprite {
-    background-image: url(../../images/home/spritesheet-service-mb.png)
+    background-image: url(../images/home/spritesheet-service-mb.png)
 }
 
 .sprite-cham-soc-da {

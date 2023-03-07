@@ -100,23 +100,6 @@
                 </div>
             </div>
             <div class="service__item">
-                <div class="service__img"><a href="https://seoulspa.vn/dich-vu/dich-vu-giam-beo"
-                        data-wpel-link="internal"><img width="176" height="176"
-                            src="https://cdn.diemnhangroup.com/seoulspa/2023/01/dich-vu-giam-beo.jpg" alt=""
-                            data-lazy-src="https://cdn.diemnhangroup.com/seoulspa/2023/01/dich-vu-giam-beo.jpg"
-                            data-ll-status="loaded" class="entered lazyloaded"><noscript><img width="176" height="176"
-                                src="https://cdn.diemnhangroup.com/seoulspa/2023/01/dich-vu-giam-beo.jpg"
-                                alt=""></noscript></a></div>
-                <div class="service__main">
-                    <div class="service__title">
-                        <a href="https://seoulspa.vn/dich-vu/dich-vu-giam-beo" data-wpel-link="internal">
-                            <i class="sv-sprite sprite-giam-beo"></i>
-                            <h3>Giảm Béo</h3>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="service__item">
                 <div class="service__img"><a href="https://seoulspa.vn/dich-vu/tham-my" data-wpel-link="internal"><img
                             width="176" height="176"
                             src="https://cdn.diemnhangroup.com/seoulspa/2023/01/dich-vu-tham-my.jpg" alt=""
