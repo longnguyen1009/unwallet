@@ -4487,7 +4487,7 @@ https://flickity.metafizzy.co
         column-gap: 15px
     }
 
-    .services__content.grid,.csvc__content.grid {
+    .csvc__content.grid {
         grid-template-columns: 1fr 1fr 1fr 1fr
     }
 
@@ -9635,7 +9635,6 @@ span.airdatepicker--time-current-ampm {
         flex: 0 0 100%;
         max-width: 100%;
     }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -9668,6 +9667,10 @@ span.airdatepicker--time-current-ampm {
     .taisao-list-item img {
         height: 100px;
         object-fit: cover;
+    }
+
+    .services__content.grid {
+        grid-template-columns: 1fr 1fr;
     }
 
 }
