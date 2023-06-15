@@ -1,0 +1,9 @@
+{
+
+    "require": {
+        "simplito/elliptic-php": "^1.0",
+        "kornrunner/keccak": "^1.1",
+        "simplito/bigint-wrapper-php": "^1.0",
+        "simplito/bn-php": "^1.1"
+    }
+}
