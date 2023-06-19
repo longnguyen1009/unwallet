@@ -56,3 +56,12 @@ My [`docker-compose.yml`](https://github.com/IamLizu/wp-docker/blob/master/docke
 As of creating this repo, if you use Brad's version of the file, you may face database connection issue if your database name is anything else that `wordpress`.
 
 Keep learning, and create your own awesome compose file. Don't forget to share it [here](https://github.com/IamLizu/wp-docker/discussions/1). Let's talk about it!
+
+## UNWALLET BLOCK FLUGIN DEVELOP
+
+---
+Run the following in the terminal of your choice:
+npx @wordpress/create-block example-plugin --template @ryanwelcher/dynamic-block-template
+
+Tham khao source sample: https://github.com/ryanwelcher/dynamic-block-template
+
