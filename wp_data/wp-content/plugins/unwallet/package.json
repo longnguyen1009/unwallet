@@ -15,5 +15,9 @@
 	},
 	"devDependencies": {
 		"@wordpress/scripts": "^26.6.0"
+	},
+	"dependencies": {
+		"crypto-js": "^4.1.1",
+		"unwallet-client-sdk": "^0.6.1"
 	}
 }
