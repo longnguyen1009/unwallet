@@ -178,23 +178,5 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 
 
-/**
- * Enqueue scripts and styles.
- */
-function unwallet_scripts() {
-	wp_enqueue_script( 'metamask-theme-unwallet', content_url(). '/node_modules/unwallet-client-sdk/dist/index.js' );
-}
-add_action( 'wp_enqueue_scripts', 'unwallet_scripts' );
-
-function set_scripts_type_attribute( $tag, $handle, $src ) {
-    if ( 'metamask-theme-unwallet' === $handle ) {
-        $tag = '<script type="module" src="'. $src .'"></script>';
-    }
-    return $tag;
-}
-add_filter( 'script_loader_tag', 'set_scripts_type_attribute', 10, 3 );
-
-
-
 
 

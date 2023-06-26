@@ -1,5 +1,4 @@
 <?php
-
 /** Make sure that the WordPress bootstrap has run before continuing. */
 // require __DIR__ . '/wp-load.php';
 
@@ -13,12 +12,12 @@ add_action( 'login_form', function() {
 } );
 
 add_action( 'login_form', function() {
-    ?>
-    <div id="uw-login">
-        <a href="" class="button">unWalletでログイン</a>
-    </div>
-<?php
+    echo do_blocks('<!-- wp:create-block/unwallet /-->');
 } );
+
+    add_action( 'login_form', function() {
+      echo do_blocks('<!-- wp:create-block/coolwallet /-->');
+    } );
 
 // add style, script for login by Metamask
 add_action( 'login_enqueue_scripts', function() {
@@ -29,11 +28,62 @@ add_action( 'login_enqueue_scripts', function() {
         'metamask_login',
         array(
             'ajaxurl' => admin_url( 'admin-ajax.php' ),
-            // 'message' => 'I want to login to Wordpress at ' . date( 'Y-m-d H:i:s' ) . '.',
         )
     );
     wp_enqueue_script( 'mm-login' );
-} );
+});
+
+// Add this code in your theme's functions.php file or in a custom plugin
+function display_login_error_message() {
+    // Check if the login error query parameter is present
+    if (isset($_GET['login_error'])) {
+        // Get the error message from the query parameter
+        $error_message = sanitize_text_field($_GET['login_error']);
+
+        // Display the error message above the login form
+        echo '<p class="message" id="login-message">' . apply_filters( 'login_messages', $error_message ) . "</p>\n";
+    }
+}
+add_filter('login_message', 'display_login_error_message');
+
+global $error, $interim_login, $action, $unwalletCallback;
+$unwalletCallback = false;
+
+if($idToken = $_POST['id_token'] ?? '') {
+    $idTokenParts = explode('.', $idToken);
+    $callbackData = json_decode(base64_decode($idTokenParts[1]), true);
+    $unwalletCallback = isset($callbackData["iss"]) && $callbackData["iss"] == "https://id.unwallet.dev";
+}
+
+if ($unwalletCallback) {
+    $address = $callbackData['sub'];
+
+    $users = get_users([
+            'meta_key' => 'unwallet_url',
+            'meta_value' => $address,
+            'number' => 1,
+            'role' => 'subscriber',
+        ]
+    );
+
+    if( ! is_wp_error( $users ) && ( $user = reset( $users ) ) ) {
+        wp_clear_auth_cookie();
+        wp_set_current_user( $user->ID );
+        wp_set_auth_cookie( $user->ID );
+
+        $user_meta = get_user_meta($user->ID);
+        $redirect_to = !empty($user_meta['redirect_url'][0])
+            ? preg_replace( '|^http://|', 'https://', $user_meta['redirect_url'][0])
+            : get_home_url();
+        wp_safe_redirect( $redirect_to );
+    } else {
+        add_filter( 'authenticate', 'my_login_validation', 10, 3 );
+        function my_login_validation($user, $username, $password) {
+            $user = new WP_Error( 'login_err', 'そのようなユーザーはいません。確認してください' );
+            return $user;
+        }
+    }
+}
 
 /**
  * Output the login page header.
@@ -52,7 +102,7 @@ add_action( 'login_enqueue_scripts', function() {
  * @param WP_Error $wp_error Optional. The error to pass. Default is a WP_Error instance.
  */
 function login_header( $title = 'Log In', $message = '', $wp_error = null ) {
-global $error, $interim_login, $action;
+global $error, $interim_login, $action, $unwalletCallback;
 
 // Don't index any of these forms.
 add_filter( 'wp_robots', 'wp_robots_sensitive_page' );
@@ -243,7 +293,6 @@ do_action( 'login_header' );
     if ( $wp_error->has_errors() ) {
         $errors   = '';
         $messages = '';
-
         foreach ( $wp_error->get_error_codes() as $code ) {
             $severity = $wp_error->get_error_data( $code );
             foreach ( $wp_error->get_error_messages( $code ) as $error_message ) {

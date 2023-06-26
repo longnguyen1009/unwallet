@@ -6,10 +6,10 @@ services:
     image: mariadb
     restart: always
     environment:
-        MYSQL_DATABASE: wordpress
-        MYSQL_USER: derma_admin
-        MYSQL_PASSWORD: test123456
-        MYSQL_RANDOM_ROOT_PASSWORD: 'derma_admin'
+        MYSQL_DATABASE: $MYSQL_DATABASE
+        MYSQL_USER: $MYSQL_USER
+        MYSQL_PASSWORD: $MYSQL_PASSWORD
+        MYSQL_RANDOM_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
     volumes: 
       - dbdata:/var/lib/mysql
     command: '--default-authentication-plugin=mysql_native_password'
@@ -21,7 +21,7 @@ services:
       # https://docs.phpmyadmin.net/en/latest/setup.html#docker-environment-variables
       PMA_HOST: mariadb
       PMA_PORT: 3306
-      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       UPLOAD_LIMIT: 50M
     ports:
       - 8080:80
@@ -41,7 +41,7 @@ services:
       - WORDPRESS_DB_HOST=mariadb:3306
       - WORDPRESS_DB_USER=$MYSQL_USER
       - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
-      - WORDPRESS_DB_NAME=wordpress
+      - WORDPRESS_DB_NAME=$MYSQL_DATABASE
     volumes:
       - ./wp_data:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini

@@ -6,7 +6,6 @@
  */
 
 require_once __DIR__ . "/vendor/autoload.php";
-require_once __DIR__ . '/unwallet-login.php';
 
 use Elliptic\EC;
 use kornrunner\Keccak;
@@ -110,14 +109,6 @@ function my_user_profile_edit_action($user) {
                                class="regular-text" />
                     </td>
                 </tr>
-                <tr class="user-description-wrap">
-                    <th><label>unWallet address</label></th>
-                    <td>
-                        <input type="text" name="unwallet_url" id="unwallet_url"
-                               value="<?php echo esc_attr(get_the_author_meta( 'unwallet_url', $user->ID ) ); ?>"
-                               class="regular-text" />
-                    </td>
-                </tr>
             </tbody>
         </table>
         <h2>Redirect URL</h2>
@@ -146,7 +137,6 @@ function save_extra_user_profile_fields( $user_id ) {
     }
     update_user_meta( $user_id, 'eth_address', $_POST['eth_address'] );
     update_user_meta( $user_id, 'redirect_url', $_POST['redirect_url'] );
-    update_user_meta( $user_id, 'unwallet_url', $_POST['unwallet_url'] );
 }
 
 // Logout action
@@ -182,18 +172,3 @@ function logout_metamask() {
         'redirec_to' => '/login',
     ]);
 }
-
-// // add style, script for login by unWallet
-// add_action( 'login_enqueue_scripts', function() {
-//     // wp_register_script( 'uw-login', plugin_dir_url( '' ) . 'metamask-login/assets/test-dist/unwallet.js', [], time(), true );
-//     wp_register_script( 'uw-login', plugin_dir_url( '' ) . 'metamask-login/assets/unwallet.js', [], time(), true );
-//     wp_enqueue_script('uw-login');
-// } );
-
-// function set_scripts_type_attribute( $tag, $handle, $src ) {
-//     if ( 'uw-login' === $handle ) {
-//         $tag = '<script type="module" src="'. $src .'"></script>';
-//     }
-//     return $tag;
-// }
-// add_filter( 'script_loader_tag', 'set_scripts_type_attribute', 10, 3 );
