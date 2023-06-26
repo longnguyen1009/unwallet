@@ -1,0 +1,30 @@
+{
+	"name": "coolwallet",
+	"version": "0.1.0",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --webpack-copy-php",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --webpack-copy-php"
+	},
+	"devDependencies": {
+		"@coolwallet/core": "^1.1.16",
+		"@coolwallet/transport-web-ble": "^1.1.3",
+		"@types/node": "^20.3.1",
+		"@wordpress/scripts": "^26.6.0"
+	},
+	"dependencies": {
+		"crypto-browserify": "^3.12.0",
+		"stream-browserify": "^3.0.0"
+	},
+	"browser": {
+		"crypto": false,
+		"stream": false
+	}
+}
