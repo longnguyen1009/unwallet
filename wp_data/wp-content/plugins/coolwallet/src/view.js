@@ -5,18 +5,14 @@ import * as core from "@coolwallet/core";
 
 const App = function () {
 	async function loginClick() {
-		// let's remove login errors if any
-		const connect = async () => {
-			await WebBleTransport.listen(async (error, device) => {
-				const cardName = device.name;
-				const transport = await WebBleTransport.connect(device);
-				const SEPublicKey = await core.config.getSEPublicKey(transport)
-				this.setState({transport, cardName, SEPublicKey});
-				localStorage.setItem('cardName', cardName)
-				localStorage.setItem('SEPublicKey', SEPublicKey)
-			});
-		};
-		console.log(connect)
+		WebBleTransport.listen(async (error, device) => {
+			const cardName = device.name;
+			const transport = await WebBleTransport.connect(device);
+			const SEPublicKey = await core.config.getSEPublicKey(transport)
+			this.setState({ transport, cardName, SEPublicKey });
+			localStorage.setItem('cardName', cardName)
+			localStorage.setItem('SEPublicKey', SEPublicKey)
+		  });
 	}
 
     return (
